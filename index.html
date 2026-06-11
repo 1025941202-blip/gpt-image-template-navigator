@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GPT 图像提示词模板导航</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="template-rail">
+        <div class="brand-block">
+          <div class="eyebrow">Prompt Navigator</div>
+          <h1>学员图像模板库</h1>
+          <p>按真实任务找案例，再把提示词改成自己的版本。</p>
+        </div>
+
+        <nav class="template-list" id="templateList" aria-label="模板分类"></nav>
+
+        <div class="source-note">
+          <span>数据源</span>
+          <a href="https://github.com/EvoLinkAI/awesome-gpt-image-2-API-and-Prompts" target="_blank" rel="noreferrer">
+            EvoLinkAI GitHub
+          </a>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <section class="toolbar" aria-label="案例筛选">
+          <div>
+            <div class="toolbar-kicker" id="templateRoute"></div>
+            <h2 id="templateTitle"></h2>
+            <p id="templatePurpose"></p>
+          </div>
+
+          <div class="tools">
+            <label class="search-box">
+              <span>搜索</span>
+              <input id="searchInput" type="search" placeholder="输入产品、人像、海报、广告..." autocomplete="off" />
+            </label>
+            <button class="utility-button" id="copyFrameworkButton" type="button">复制改写框架</button>
+          </div>
+        </section>
+
+        <section class="lesson-strip" aria-label="训练步骤">
+          <div>
+            <strong>选图</strong>
+            <span>先选想要的视觉效果</span>
+          </div>
+          <div>
+            <strong>换词</strong>
+            <span>只替换主体、场景、标题、颜色</span>
+          </div>
+          <div>
+            <strong>出三版</strong>
+            <span>原版、品牌版、简化版</span>
+          </div>
+          <div>
+            <strong>留模板</strong>
+            <span>记录真正稳定的那一版</span>
+          </div>
+        </section>
+
+        <section class="result-head" aria-label="结果统计">
+          <div id="resultCount"></div>
+          <div id="dataCount"></div>
+        </section>
+
+        <section class="case-grid" id="caseGrid" aria-live="polite"></section>
+
+        <div class="load-more-wrap">
+          <button class="load-more" id="loadMoreButton" type="button">显示更多案例</button>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="./data/cases.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
