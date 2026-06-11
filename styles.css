@@ -334,6 +334,14 @@ a {
   display: block;
 }
 
+.special-card .image-wrap {
+  aspect-ratio: 3 / 4;
+}
+
+.special-card .image-wrap img {
+  object-fit: cover;
+}
+
 .case-tag {
   position: absolute;
   top: 10px;

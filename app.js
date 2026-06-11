@@ -137,31 +137,37 @@ const SPECIAL_PROMPTS = {
     {
       title: "干货知识卡片封面",
       source: "专用自建模板：知识卡片封面",
+      imageUrl: "./assets/xhs-covers/knowledge-card.png",
       prompt: `生成一张小红书笔记封面，竖版 3:4，主题是「{主题}」。画面要像真实小红书爆款干货封面：大标题清晰醒目，副标题简短，主体信息一眼能懂。\n\n版式要求：上方 18% 放账号/栏目小字，中间 45% 放超大中文标题「{主标题}」，下方放 3 个信息点卡片。背景使用柔和浅色，加入少量贴纸、箭头、荧光笔划线和圆角卡片，但不要杂乱。\n\n文字要求：中文准确，标题不超过 12 个字，副标题不超过 18 个字。整体风格干净、可信、有收藏感，适合知识分享、AI 教程、职场干货。\n\n不要水印，不要真实平台 UI，不要二维码，不要过度复杂。`,
     },
     {
       title: "个人 IP 课程封面",
       source: "专用自建模板：课程/直播封面",
+      imageUrl: "./assets/xhs-covers/course-poster.png",
       prompt: `为小红书生成一张个人 IP 课程封面，竖版 3:4。主题是「{课程主题}」，目标人群是「{目标人群}」。\n\n画面结构：左侧或下方保留讲师半身形象/虚拟讲师形象，右侧或上方放大标题「{课程标题}」。加入 3 个卖点标签：{卖点1}、{卖点2}、{卖点3}。视觉要像高质量知识博主封面，不要像传统招生广告。\n\n设计风格：清爽专业、轻商业感、强标题层级、适合手机信息流快速识别。配色使用白色底 + 一个主色 + 一个强调色。\n\n中文文字必须清晰准确，避免密集小字，不要二维码，不要联系方式。`,
     },
     {
       title: "产品种草封面",
       source: "专用自建模板：产品种草封面",
+      imageUrl: "./assets/xhs-covers/product-seeding.png",
       prompt: `生成一张小红书产品种草封面，竖版 3:4。产品是「{产品名称}」，核心卖点是「{核心卖点}」。\n\n画面要求：产品放在画面中央偏下，占画面 35%-45%；顶部放大标题「{吸引点击的标题}」；旁边用 3 个小标签突出卖点。背景要有生活方式场景，但不能抢产品主体。\n\n风格：真实、明亮、干净、有轻微杂志感和小红书种草感。适合美妆、课程、工具、数码、家居产品。\n\n不要出现虚假品牌 logo，不要真实平台界面，不要水印。`,
     },
     {
       title: "对比冲突封面",
       source: "专用自建模板：前后对比封面",
+      imageUrl: "./assets/xhs-covers/comparison-cover.png",
       prompt: `生成一张小红书对比型封面，竖版 3:4。主题是「{主题}」。画面分成左右两栏，左边是「{错误做法/过去状态}」，右边是「{正确做法/理想状态}」。\n\n中间用醒目的 VS 或箭头连接，顶部放标题「{主标题}」。左右两边都要有清楚的视觉差异，可以用颜色、表情、场景、图标或简短标签表达对比。\n\n风格：信息清楚、冲突强、适合教程、避坑、前后变化、案例拆解。中文文字准确，不要超过 5 处文字元素。`,
     },
     {
       title: "情绪生活方式封面",
       source: "专用自建模板：生活方式/Plog 封面",
+      imageUrl: "./assets/xhs-covers/lifestyle-cover.png",
       prompt: `生成一张小红书生活方式封面，竖版 3:4。主题是「{生活主题}」，情绪关键词是「{情绪关键词}」。\n\n画面像一张精心设计的生活方式笔记首图：真实照片感或轻胶片感，主体人物/物品清晰，画面有自然留白。标题「{标题}」放在不遮挡主体的位置，用简洁中文字体。\n\n加入少量手写标注、日期、小贴纸或胶带元素，让画面有个人记录感，但不要变成复杂拼贴。适合旅行、穿搭、咖啡、读书、日常成长类内容。`,
     },
     {
       title: "爆款清单封面",
       source: "专用自建模板：清单型封面",
+      imageUrl: "./assets/xhs-covers/list-cover.png",
       prompt: `生成一张小红书清单型封面，竖版 3:4。主题是「{清单主题}」。\n\n版式：大标题「{主标题}」占画面上半部分，下面用 5 个编号小卡片列出关键词：{关键词1}、{关键词2}、{关键词3}、{关键词4}、{关键词5}。整体像高收藏率的知识清单封面。\n\n视觉风格：圆角卡片、轻柔配色、清楚网格、重点数字放大、适量图标点缀。中文文字准确，适合 AI 教程、职场、学习方法、工具推荐。`,
     },
   ],
@@ -327,9 +333,9 @@ function renderCards(matches) {
 
   const specialHtml = specialCards.map((item, index) => `
     <article class="case-card special-card" data-special-index="${index}">
-      <div class="special-cover">
-        <span>专用模板</span>
-        <strong>${escapeHtml(item.title)}</strong>
+      <div class="image-wrap special-image">
+        <img src="${escapeHtml(item.imageUrl)}" alt="${escapeHtml(item.title)}" loading="lazy" />
+        <span class="case-tag">专用模板</span>
       </div>
       <div class="case-body">
         <h3 class="case-title">${escapeHtml(item.title)}</h3>
